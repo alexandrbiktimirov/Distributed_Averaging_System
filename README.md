@@ -1,6 +1,6 @@
-Implementation of Distributed Averaging System (DAS)
+### Implementation of Distributed Averaging System (DAS)
 
-1. Overview
+## 1. Overview
 The Distributed Averaging System (DAS) is a Java-based application designed to operate in two modes: Master and Slave, determined dynamically at runtime. This document details the features implemented, challenges faced, protocol design, and potential improvements.
 Usage
 java DAS <port> <number>
@@ -10,7 +10,7 @@ Modes of Operation
 •	Master Mode: Initiated if the application successfully binds to the specified <port>. The process listens for incoming messages, processes received numbers, and broadcasts results.
 •	Slave Mode: Activated if the specified <port> is already in use. The process sends the specified <number> to the Master and terminates.
 ________________________________________
-2. Implemented Features
+## 2. Implemented Features
 2.1	Master Mode
 •	Initialization: binds to the specified <port> and stores the <number> parameter.
 •	Message handling:
@@ -25,11 +25,11 @@ ________________________________________
 •	Message transmission: Sends the specified <number> to the Master at <port>.
 •	Termination: Exits immediately after successfully sending the message.
 ________________________________________
-3. Unimplemented Features
+## 3. Unimplemented Features
 •	Support for IPv6 networks.
 •	Comprehensive logging for network errors, packet losses, or invalid message formats.
 ________________________________________
-4. Protocol Description
+## 4. Protocol Description
 4.1 Communication Protocol
 •	Transport Layer: UDP ensures fast communication but lacks guaranteed delivery.
 •	Message Format: Plain text integers.
@@ -45,16 +45,16 @@ ________________________________________
 •	The program filters malformed messages and logs warnings.
 •	Slave mode terminates gracefully if Master is unreachable.
 ________________________________________
-5. Difficulties Encountered
+## 5. Difficulties Encountered
 •	Handling dynamic network configuration, subnet masks, and calculating broadcast addresses across diverse environments.
 •	Differentiating between runtime network issues and logical errors in message processing.
 •	Ensuring thread-safe broadcasting during average computations.
 ________________________________________
-6. Existing Errors and Limitations
+## 6. Existing Errors and Limitations
 •	IPv6 is currently unsupported.
 •	Network issues (e.g., packet loss) are not logged explicitly.
 •	Extremely large inputs may cause parsing errors.
 ________________________________________
-7. Conclusions
+## 7. Conclusions
 The implementation meets the specified requirements, providing a functional Master-Slave communication system using UDP. The project demonstrates key concepts of distributed systems, including message broadcasting, input validation, and error handling. Potential improvements include IPv6 compatibility, robust error logging, and enhanced protocol scalability.
 
